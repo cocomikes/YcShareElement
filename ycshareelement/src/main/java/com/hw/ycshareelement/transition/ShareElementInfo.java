@@ -3,9 +3,11 @@ package com.hw.ycshareelement.transition;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import android.view.View;
+
 import com.hw.ycshareelement.R;
 
 /**

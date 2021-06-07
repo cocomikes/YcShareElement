@@ -9,7 +9,6 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
 import android.transition.Transition;
 import android.transition.TransitionValues;
 import android.util.Pair;
@@ -17,6 +16,8 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.annotation.RequiresApi;
 
 import java.util.Map;
 

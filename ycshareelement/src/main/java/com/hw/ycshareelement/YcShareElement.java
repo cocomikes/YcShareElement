@@ -11,18 +11,21 @@ import android.graphics.RectF;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.view.ViewCompat;
 import android.transition.Transition;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
+
 import com.hw.ycshareelement.transition.DefaultShareElementTransitionFactory;
-import com.hw.ycshareelement.transition.IShareElements;
 import com.hw.ycshareelement.transition.IShareElementSelector;
 import com.hw.ycshareelement.transition.IShareElementTransitionFactory;
+import com.hw.ycshareelement.transition.IShareElements;
 import com.hw.ycshareelement.transition.ShareElementInfo;
 
 import java.util.ArrayList;
@@ -36,12 +39,13 @@ import static android.app.Activity.RESULT_OK;
 /**
  * Created by huangwei on 2018/9/22.
  */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class YcShareElement {
     private static final String KEY_SHARE_ELEMENTS = "key_share_elements";
 
-    public static Bundle buildOptionsBundle(@NonNull final Activity activity, @Nullable final IShareElements getShareElement) {
+    public static ActivityOptionsCompat buildOptionsBundle(@NonNull final Activity activity, @Nullable final IShareElements getShareElement) {
         if (!TransitionHelper.ENABLE) {
-            return new Bundle();
+            return ActivityOptionsCompat.makeBasic();
         }
         activity.setExitSharedElementCallback(new SharedElementCallback() {
             @Override
@@ -102,7 +106,7 @@ public class YcShareElement {
         setEnterTransitions(activity, IShareElements, true,new DefaultShareElementTransitionFactory());
     }
 
-    public static void setEnterTransitions(@NonNull final Activity activity, @Nullable final IShareElements IShareElements,boolean postponeTransition) {
+    public static void setEnterTransitions(@NonNull final Activity activity, @Nullable final IShareElements IShareElements, boolean postponeTransition) {
         setEnterTransitions(activity, IShareElements, postponeTransition,new DefaultShareElementTransitionFactory());
     }
 
@@ -234,7 +238,7 @@ public class YcShareElement {
     }
 
 
-    private static void setTransition(Activity activity, List<View> sharedElements,IShareElementTransitionFactory transitionFactory) {
+    private static void setTransition(Activity activity, List<View> sharedElements, IShareElementTransitionFactory transitionFactory) {
         if (!TransitionHelper.ENABLE) {
             return;
         }

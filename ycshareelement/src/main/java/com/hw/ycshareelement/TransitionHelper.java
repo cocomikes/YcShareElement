@@ -2,11 +2,11 @@ package com.hw.ycshareelement;
 
 import android.app.Activity;
 import android.os.Build;
-import android.os.Bundle;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
 import android.view.View;
 import android.view.Window;
+
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class TransitionHelper {
         }
     }
 
-    public static Bundle getTransitionBundle(Activity activity, View... shareViews) {
+    public static ActivityOptionsCompat getTransitionBundle(Activity activity, View... shareViews) {
         if (!ENABLE || shareViews == null) {
             return null;
         }
@@ -36,6 +36,6 @@ public class TransitionHelper {
         Pair<View, String>[] pairsArray = new Pair[pairs.size()];
         pairs.toArray(pairsArray);
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, pairsArray);
-        return options.toBundle();
+        return options;
     }
 }
