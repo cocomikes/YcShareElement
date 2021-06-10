@@ -34,7 +34,7 @@ public class AdvancedListActivity extends AppCompatActivity {
         YcShareElement.onActivityReenter(this, resultCode, data, new IShareElementSelector() {
             @Override
             public void selectShareElements(List<ShareElementInfo> list) {
-                mFragment.selectShareElement(list.get(0));
+//                mFragment.selectShareElement(list.get(0));
             }
         });
     }

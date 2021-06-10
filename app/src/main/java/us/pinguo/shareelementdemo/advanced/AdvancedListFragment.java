@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -111,8 +112,8 @@ public class AdvancedListFragment extends Fragment implements BaseListCell.OnCel
             BitmapThumbnail.sBitmap = thumbnail;
             BitmapThumbnail.sKey = mTransitionCell.getData().url;
         }
-        Bundle options = YcShareElement.buildOptionsBundle(getActivity(), this);
-        startActivityForResult(intent, REQUEST_CONTENT, options);
+        ActivityOptionsCompat optionsCompat = YcShareElement.buildOptionsBundle(getActivity(), this);
+        startActivityForResult(intent, REQUEST_CONTENT, optionsCompat.toBundle());
     }
 
     @Override

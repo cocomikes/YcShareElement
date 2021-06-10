@@ -1,10 +1,12 @@
 package us.pinguo.shareelementdemo.contacts;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.ViewCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -50,14 +52,14 @@ public class ContactsActivity extends AppCompatActivity {
     private void gotoDetailActivity(Contacts contacts, final View avatarImg, final View nameTxt) {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(KEY_CONTACTS, contacts);
-        Bundle bundle = YcShareElement.buildOptionsBundle(ContactsActivity.this, new IShareElements() {
+        ActivityOptionsCompat optionsCompat = YcShareElement.buildOptionsBundle(ContactsActivity.this, new IShareElements() {
             @Override
             public ShareElementInfo[] getShareElements() {
                 return new ShareElementInfo[]{new ShareElementInfo(avatarImg),
                         new ShareElementInfo(nameTxt, new TextViewStateSaver())};
             }
         });
-        ActivityCompat.startActivity(ContactsActivity.this, intent, bundle);
+        ActivityCompat.startActivity(ContactsActivity.this, intent, optionsCompat.toBundle());
     }
 
     private void initRecyclerView() {

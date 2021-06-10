@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+
 import android.view.View;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
@@ -40,8 +42,8 @@ public class SimpleFromActivity extends AppCompatActivity implements IShareEleme
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SimpleFromActivity.this, SimpleToActivity.class);
-                Bundle optionsBundle = YcShareElement.buildOptionsBundle(SimpleFromActivity.this,SimpleFromActivity.this);
-                startActivity(intent, optionsBundle);
+                ActivityOptionsCompat optionsCompat = YcShareElement.buildOptionsBundle(SimpleFromActivity.this,SimpleFromActivity.this);
+                startActivity(intent, optionsCompat.toBundle());
             }
         });
     }

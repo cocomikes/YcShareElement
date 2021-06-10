@@ -29,6 +29,11 @@ public class AdvancedContentActivity extends AppCompatActivity implements IShare
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     public void finishAfterTransition() {
         YcShareElement.finishAfterTransition(this, this);
         super.finishAfterTransition();
